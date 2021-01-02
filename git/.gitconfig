@@ -1,0 +1,31 @@
+[user]
+	name = Felipe Rodopoulos
+	email = felipe.rodopoulos@tfgco.com
+[core]
+	excludesfile = /Users/felipeoliveira/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/felipeoliveira/.stCommitMsg
+[alias]
+	lg = log --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%an)' --abbrev-commit
+	pursh = push --force-with-lease
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+	cd = checkout
+	wat = status
+	nah = !git reset --hard && git clean -df
+	amend = commit --amend --no-edit
+	undo = reset --soft HEAD^
+[url "git@git.topfreegames.com:"]
+	insteadOf = https://git.topfreegames.com/
+[pull]
+	rebase = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
