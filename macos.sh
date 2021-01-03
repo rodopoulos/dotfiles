@@ -3,8 +3,12 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
 # System Preferences > General > Click in the scrollbar to: Jump to the spot that's clicked
 defaults write -globalDomain AppleScrollerPagingBehavior -bool true
+# set dark mode theme in macOS
+osascript -l JavaScript -e "Application('System Events').appearancePreferences.darkMode = true"
+
 # Turn the Dock icons translucent for applications that are open but hidden
 defaults write com.apple. Dock showhidden -bool YES;
+
 # show filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Keep folders on top when sorting by name
