@@ -52,8 +52,9 @@ brew install redis
 brew install shellcheck
 brew install stern
 brew install terraform
-brew install yarn
+brew install vlc
 brew install watch
+brew install yarn
 
 # Install CLI tools
 brew cask install cleanmymac
