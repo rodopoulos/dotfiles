@@ -36,6 +36,7 @@ brew install cocoapods
 brew install curl
 brew install font-fira-code
 brew install git
+brew install git-delta
 brew install git-lfs
 brew install go
 brew install helm
