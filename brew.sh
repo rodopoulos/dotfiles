@@ -34,6 +34,7 @@ brew install aws-mfa
 brew install clang-format
 brew install cocoapods
 brew install curl
+brew install fish
 brew install font-fira-code
 brew install git
 brew install git-delta
