@@ -53,6 +53,8 @@ brew install redis
 brew install shellcheck
 brew install stern
 brew install terraform
+brew install unity
+brew install visual-studio-code
 brew install vlc
 brew install watch
 brew install yarn
