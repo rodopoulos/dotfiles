@@ -1,0 +1,14 @@
+configuration {
+  modi: "combi";
+  combi: "run,drun,file-browser";
+  combi-hide-mode-prefix: true;
+  width: 25;
+  lines: 10;
+  soft: true;
+  show-icons: true;
+  icon-theme: "Papirus";
+  sorting-method: "fzf";
+  hide-scrollbar: false;
+  theme: "vapor";
+  terminal: "alacritty";
+}

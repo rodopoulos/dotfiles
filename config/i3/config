@@ -1,0 +1,154 @@
+# Variables
+set_from_resource $fg       fg #000
+set_from_resource $bg       bg #fff
+set_from_resource $accent   accent #fff
+set_from_resource $border   border #ccc
+
+# Modifier keys
+set $mod Mod4
+floating_modifier $mod
+
+# Layouts
+bindsym $mod+h           split h
+bindsym $mod+v           split v
+bindsym $mod+f           fullscreen toggle
+bindsym $mod+e           layout toggle split
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# Focus
+bindsym $mod+Mod1+space       focus mode_toggle
+bindsym $mod+a           focus parent
+
+bindsym $mod+Left        focus left
+bindsym $mod+Down        focus down
+bindsym $mod+Up          focus up
+bindsym $mod+Right       focus right
+
+focus_follows_mouse      yes
+
+# Workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+z workspace back_and_forth
+workspace_auto_back_and_forth no
+
+# Modes
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# Default colors ...        border   	backgr.  	text  		indicator
+client.focused              $accent 	$accent 	$accent 	$accent
+client.focused_inactive     $border  	$border  	$border		$border
+client.unfocused            $border  	$border		$border		$border
+client.urgent               $accent 	$accent 	$accent 	$accent
+
+# -- Window rules -- #
+for_window [class="\w*"] 		border pixel 1
+for_window [window_role="pop-up"] 	floating enable; border none
+for_window [window_role="bubble"] 	floating enable; border none
+for_window [class="Screenkey"] 		floating enable; border none
+for_window [class="Firefox"]		border none
+for_window [class="slickpicker"] 	floating enable; border none
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:DejaVu Sans Mono, FontAwesome 10
+# font pango:Inconsolata-Regular, FontAwesome 10
+
+# Startup
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id polybar -r bar
+exec --no-startup-id dunst &
+exec --no-startup-id compton &
+
+## Bindings
+
+# Resize mode
+bindsym $mod+r mode "resize"
+# Sound
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master toggle"
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# Brightness
+bindsym XF86MonBrightnessDown 	exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp 	exec xbacklight -inc 10
+# Terminal
+bindsym $mod+Return exec alacritty
+# Kill
+bindsym Mod1+F4 kill
+bindsym $mod+Shift+q kill
+bindsym $mod+k exec rofi -show Kill -modi Kill:$HOME/.config/rofi/kill.sh 
+# Menu
+bindsym $mod+space exec rofi -show combi -show-icons
+# Power
+bindsym Mod1+Ctrl+Delete exec rofi -show Power -modi Power:$HOME/.config/rofi/power.sh
+# i3 reload and exit
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# i3status bar
+# bar {
+# 	status_command i3status
+# 	position top
+#         tray_output primary
+
+# 	colors {
+#                 background $bg
+#                 statusline $accent
+
+#                 focused_workspace  $accent  $bg
+#                 active_workspace   $accent  $bg
+#                 inactive_workspace $fg  $bg
+#                 urgent_workspace   $fg  $bg 
+#         }
+# }
