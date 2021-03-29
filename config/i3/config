@@ -32,6 +32,17 @@ bindsym $mod+Right       focus right
 focus_follows_mouse      yes
 
 # Workspaces
+workspace 1 output eDP1
+workspace 2 output eDP1
+workspace 3 output eDP1
+workspace 4 output eDP1
+workspace 5 output eDP1
+workspace 6 output HDMI2
+workspace 7 output HDMI2
+workspace 8 output HDMI2
+workspace 9 output HDMI2
+workspace 10 output HDMI2
+
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -53,6 +64,9 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
 
 bindsym $mod+z workspace back_and_forth
 workspace_auto_back_and_forth no
