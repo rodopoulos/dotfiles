@@ -153,7 +153,7 @@ bindsym Mod1+F4 kill
 bindsym $mod+Shift+q kill
 bindsym $mod+k exec rofi -show Kill -modi Kill:$HOME/.config/rofi/kill.sh 
 # Menu
-bindsym $mod+space exec rofi -show combi -show-icons
+bindsym $mod+space exec albert toggle
 # Power
 bindsym Mod1+Ctrl+Delete exec rofi -show Power -modi Power:$HOME/.config/rofi/power.sh
 # i3 reload and exit
