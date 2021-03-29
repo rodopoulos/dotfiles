@@ -148,6 +148,7 @@ bindsym XF86MonBrightnessUp 	exec xbacklight -inc 10
 # Terminal
 bindsym $mod+Return exec alacritty
 # Kill
+bindsym $mod+q kill
 bindsym Mod1+F4 kill
 bindsym $mod+Shift+q kill
 bindsym $mod+k exec rofi -show Kill -modi Kill:$HOME/.config/rofi/kill.sh 
