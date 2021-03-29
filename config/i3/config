@@ -128,6 +128,9 @@ exec --no-startup-id albert &
 
 # Resize mode
 bindsym $mod+r mode "resize"
+# PrintScreen
+bindsym Print exec maim -s "$HOME/screenshots/$(date).png"
+bindsym Shift+Print exec maim -s | xclip -selection clipboard -t image/png
 # Sound
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5- unmute"
